@@ -36,7 +36,7 @@
     "test": "node --test",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "prepare": "simple-git-hooks",
-    "prepack": "node scripts/clean-manifest.mjs"
+    "prepack": "node scripts/clean-before-pack.mjs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "4.13.0",

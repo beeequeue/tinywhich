@@ -8,3 +8,16 @@ for (const field of badFields) {
 }
 
 writeFileSync("./package.json", `${JSON.stringify(pkgJson, null, 2)}\n`)
+
+// README
+
+const readmeLines = readFileSync("./README.md", "utf8").split("\n")
+writeFileSync(
+  "./README.md",
+  readmeLines
+    .splice(
+      0,
+      readmeLines.findIndex((line) => line.includes(" Installation")),
+    )
+    .join("\n"),
+)
