@@ -11,6 +11,7 @@
     // Modules
     "module": "esnext",
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./src",

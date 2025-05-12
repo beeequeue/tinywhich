@@ -13,11 +13,12 @@ export default defineConfig({
     TEST: false,
   },
 
+  target: "node16",
   platform: "node",
-  format: "esm",
+  format: ["cjs", "esm"],
   dts: true,
   fixedExtension: true,
 
-  minify: true,
-  sourcemap: true,
+  minify: false,
+  sourcemap: process.env.IS_PUBLISH == null,
 })

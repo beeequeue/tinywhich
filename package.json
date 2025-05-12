@@ -7,15 +7,17 @@
   "license": "MIT",
   "packageManager": "pnpm@10.10.0",
   "engines": {
-    "node": "^22"
+    "node": ">=16"
   },
   "files": [
     "dist",
     "CHANGELOG.md"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js"
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.mjs"
   },
   "nano-staged": {
     "*.{js,jsx,ts,tsx,json,json5,yaml,yml,css,scss,md}": [
@@ -29,7 +31,7 @@
     "build": "tsdown",
     "dev": "tsdown --watch",
     "lint": "eslint",
-    "test": "node --test",
+    "test": "node --experimental-strip-types --test",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "prepare": "simple-git-hooks"
   },
@@ -42,7 +44,7 @@
     "nano-staged": "0.8.0",
     "prettier": "3.5.3",
     "simple-git-hooks": "2.13.0",
-    "tsdown": "0.11.1",
+    "tsdown": "0.11.3",
     "typescript": "5.8.3"
   }
 }
