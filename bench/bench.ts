@@ -1,7 +1,7 @@
-import { barplot, summary, bench, run } from "mitata"
+import { barplot, bench, run, summary } from "mitata"
+import { which as tinywhich } from "tinywhich"
 // @ts-expect-error: missing types
 import nodewhich from "which"
-import { which as tinywhich } from "tinywhich"
 
 barplot(() => {
   summary(() => {
@@ -9,7 +9,7 @@ barplot(() => {
 
     bench("tinywhich", function* () {
       yield {
-        [0](): string {
+        0(): string {
           return str
         },
 
@@ -21,7 +21,7 @@ barplot(() => {
 
     bench("which", function* () {
       yield {
-        [0](): string {
+        0(): string {
           return str
         },
 
@@ -33,7 +33,7 @@ barplot(() => {
 
     bench("which (async)", function* () {
       yield {
-        [0](): string {
+        0(): string {
           return str
         },
 

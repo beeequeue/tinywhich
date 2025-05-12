@@ -31,7 +31,7 @@ export default antfu({
   test: { overrides: { "test/no-import-node-test": "off" } },
   typescript: {
     tsconfigPath: "tsconfig.json",
-    ignoresTypeAware: ["copy.ts", "*.config.*"],
+    ignoresTypeAware: ["copy.ts", "*.config.*", "bench/bench.ts"],
 
     overridesTypeAware: {
       "ts/no-floating-promises": [
