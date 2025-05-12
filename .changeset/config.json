@@ -3,7 +3,7 @@
   "access": "public",
   "baseBranch": "main",
   "changelog": [
-    "@changesets/changelog-github",
+    "./.changeset/format.mjs",
     {
       "repo": "BeeeQueue/tinywhich"
     }
