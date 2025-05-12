@@ -2,7 +2,7 @@
   "name": "tinywhich",
   "type": "module",
   "description": "A tiny library for locating files in directories specified by `PATH`",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": "beequeue <adam@haglund.dev>",
   "repository": "https://github.com/beeequeue/tinywhich",

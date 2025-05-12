@@ -1,5 +1,11 @@
 # tinywhich
 
+## 0.1.2
+
+### Patch Changes
+
+- `14f5286` Thanks @beeequeue! - Minimized readme file size in published package
+
 ## 0.1.1
 
 ### Patch Changes
