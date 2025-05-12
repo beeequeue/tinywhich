@@ -9,7 +9,7 @@ A library for locating files in the directories specified by the `PATH` (or `Pat
 
 Supports Windows' `PATHEXT` environment variable.
 
-A smaller (50kb -> 5kb), faster (probably?) alternative to [which](https://github.com/npm/node-which).
+A smaller (50kb -> 5kb), faster alternative to [which](https://github.com/npm/node-which).
 
 ## Installation
 
