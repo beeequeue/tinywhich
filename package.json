@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "author": "beequeue <adam@haglund.dev>",
-  "repository": "beeequeue/remsg.git",
+  "repository": "https://github.com/beeequeue/tinywhich",
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=16"
