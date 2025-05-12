@@ -141,7 +141,7 @@ jobs:
     strategy:
       matrix:
         runner: [ubuntu-latest, macos-latest, windows-latest]
-        node: [16, 18, 20, 22, 24]
+        node: [18, 20, 22, 24]
 
     runs-on: ${{ matrix.runner }}
 
@@ -157,5 +157,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      # pnpm doesn't support node 16
-      - run: npm run test
+      - run: corepack enable
+
+      - name: find pnpm cache path
+        id: cache
+        run: echo "path=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.cache.outputs.path }}
+          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            v1-pnpm-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm run test
