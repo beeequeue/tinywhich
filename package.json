@@ -1,10 +1,11 @@
 {
   "name": "tinywhich",
   "type": "module",
-  "private": true,
-  "version": "0.0.0",
-  "author": "BeeeQueue <adam@haglund.dev>",
+  "description": "A tiny library for locating files in directories specified by `PATH`",
+  "version": "0.0.3",
   "license": "MIT",
+  "author": "beequeue <adam@haglund.dev>",
+  "repository": "beeequeue/remsg.git",
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=16"
@@ -31,18 +32,22 @@
     "build": "tsdown",
     "dev": "tsdown --watch",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test",
+    "test": "node --test",
     "typecheck": "tsc --noEmit --project tsconfig.json",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "prepack": "node scripts/clean-manifest.mjs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "4.13.0",
+    "@changesets/changelog-github": "1.0.0-next.0",
+    "@changesets/cli": "3.0.0-next.0",
     "@tsconfig/node22": "22.0.1",
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "22.15.17",
     "eslint": "9.26.0",
     "nano-staged": "0.8.0",
     "prettier": "3.5.3",
+    "publint": "0.3.12",
     "simple-git-hooks": "2.13.0",
     "tsdown": "0.11.3",
     "typescript": "5.8.3"

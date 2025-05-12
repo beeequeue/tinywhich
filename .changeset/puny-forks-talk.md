@@ -1,0 +1,5 @@
+---
+"tinywhich": minor
+---
+
+Initial release.

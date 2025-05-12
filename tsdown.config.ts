@@ -18,7 +18,4 @@ export default defineConfig({
   format: ["cjs", "esm"],
   dts: true,
   fixedExtension: true,
-
-  minify: false,
-  sourcemap: process.env.IS_PUBLISH == null,
 })

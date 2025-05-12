@@ -1,4 +1,4 @@
-packages: []
+packages: [./]
 
 overrides:
   "@antfu/eslint-config>@eslint/markdown": "-"

@@ -1,20 +1,25 @@
 import { existsSync } from "node:fs"
 import { delimiter, join } from "node:path"
 
+const isWin = process.platform === "win32"
+
 const getPathDirs = () => {
-  const pathString =
-    process.platform === "win32"
-      ? (process.env.Path ?? process.env.PATH)
-      : process.env.PATH
+  const pathString = isWin ? (process.env.Path ?? process.env.PATH) : process.env.PATH
   const pathDirs = pathString?.split(delimiter) ?? []
 
   return pathDirs
 }
 
-const windowsExts =
-  process.platform === "win32"
-    ? (process.env.PATHEXT?.split(delimiter)?.map((ext) => ext.toLowerCase()) ?? [".exe"])
-    : []
+const uniq = <T>(array: T[]): T[] => [...new Set(array)]
+
+const windowsExts = isWin
+  ? uniq(
+      [".EXE", ".CMD", ".BAT", ...(process.env.PATHEXT?.split(delimiter) ?? [])]
+        .filter((ext) => ext[0] === ".")
+        .map((ext) => ext.toLowerCase()),
+    )
+  : []
+
 /** Checks if a file exists with any of the path extensions in PATHEXT */
 const windowsExecutableExists = (filePath: string) => {
   for (const ext of windowsExts) {
@@ -27,12 +32,8 @@ const windowsExecutableExists = (filePath: string) => {
 }
 
 const executableExists = (filePath: string) => {
-  if (
-    // If on windows
-    process.platform === "win32" &&
-    // also check if the file exists with PATHEXT extensions
-    windowsExecutableExists(filePath)
-  ) {
+  // If on windows also check if the file exists with PATHEXT extensions
+  if (isWin && windowsExecutableExists(filePath)) {
     return true
   }
 

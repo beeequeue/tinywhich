@@ -3,8 +3,9 @@ import fs from "node:fs"
 import path from "node:path"
 import { after, afterEach, before, beforeEach, describe, it } from "node:test"
 
-import { which } from "./index.ts"
+import { which } from "tinywhich"
 
+const isWin = process.platform === "win32"
 const originalPath = process.env.Path ?? process.env.PATH
 
 describe(`node_modules/.bin${path.delimiter}node_modules/tsdown`, () => {
@@ -12,7 +13,7 @@ describe(`node_modules/.bin${path.delimiter}node_modules/tsdown`, () => {
     fs.writeFileSync("node_modules/.bin/__test__", "", "utf8")
 
     // For testing if PATHEXT support is working
-    if (process.platform === "win32") {
+    if (isWin) {
       fs.writeFileSync("node_modules/.bin/__test__.cmd", "", "utf8")
     }
   })
@@ -20,7 +21,7 @@ describe(`node_modules/.bin${path.delimiter}node_modules/tsdown`, () => {
   after(() => {
     fs.rmSync("node_modules/.bin/__test__", { force: true })
 
-    if (process.platform === "win32") {
+    if (isWin) {
       fs.rmSync("node_modules/.bin/__test__.cmd", { force: true })
     }
   })
@@ -37,21 +38,26 @@ describe(`node_modules/.bin${path.delimiter}node_modules/tsdown`, () => {
 
   const existingFiles = [
     "tsdown",
-    "tsdown.cmd",
-    "tsdown.CMD",
-    "tsdown.ps1",
+    isWin && "tsdown.cmd",
+    isWin && "tsdown.CMD",
+    isWin && "tsdown.ps1",
     "eslint",
     "README.md",
     "esm-shims.js",
     "__test__",
-  ]
+  ].filter((v) => !!v)
   for (const fileName of existingFiles) {
     it(`finds ${fileName}`, () => {
       assert.strict.notEqual(which(fileName), null)
     })
   }
 
-  const nonExistingFiles = ["non-existing-file", "rollup", "rollup.cmd"]
+  const nonExistingFiles = [
+    "non-existing-file",
+    "rollup",
+    isWin && "rollup.cmd",
+    isWin && "foobar",
+  ].filter((v) => !!v)
   for (const fileName of nonExistingFiles) {
     it(`does not find ${fileName}`, () => {
       assert.strict.equal(which(fileName), null)
