@@ -61,10 +61,10 @@ which("notfound") // null
 
 ## Comparison
 
-| pkg       | PATHEXT | install size | bundle size | bench (linux)    | bench (windows)     |
-| --------- | ------- | ------------ | ----------- | ---------------- | ------------------- |
-| tinywhich | ✅      | 6kb          | 552b        | 19µs             | 216µs               |
-| which     | ❌      | 50kb (x8)    | 3.88kb (x7) | 60µs (x3 (sync)) | 960µs (x4.5 (sync)) |
+| pkg       | install size | bundle size | bench (linux)    | bench (windows)     |
+| --------- | ------------ | ----------- | ---------------- | ------------------- |
+| tinywhich | 6kb          | 552b        | 19µs             | 216µs               |
+| which     | 50kb (x8)    | 3.88kb (x7) | 60µs (x3 (sync)) | 960µs (x4.5 (sync)) |
 
 - _Benchmarks can be found in [./bench](./bench)_
 - _Windows benchmark was run on 9800X3D + NVMe SSD, Node v22, with 44 directories in `PATH`, and default `PATHEXT`_
