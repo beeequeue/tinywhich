@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "beequeue <adam@haglund.dev>",
   "repository": "https://github.com/beeequeue/tinywhich",
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.23.0",
   "engines": {
     "node": ">=16"
   },
@@ -21,13 +21,13 @@
     "require": "./dist/index.cjs",
     "default": "./dist/index.mjs"
   },
-  "nano-staged": {
+  "lint-staged": {
     "*.{js,jsx,ts,tsx,json,json5,yaml,yml,css,scss,md}": [
-      "prettier --write"
+      "prettier --experimental-cli --write"
     ]
   },
   "simple-git-hooks": {
-    "pre-commit": "./node_modules/.bin/nano-staged"
+    "pre-commit": "./node_modules/.bin/lint-staged"
   },
   "scripts": {
     "build": "tsdown",
@@ -39,18 +39,18 @@
     "prepack": "node scripts/clean-before-pack.mjs"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "4.14.1",
-    "@changesets/changelog-github": "1.0.0-next.0",
-    "@changesets/cli": "3.0.0-next.0",
-    "@tsconfig/node22": "22.0.2",
-    "@tsconfig/strictest": "2.0.5",
-    "@types/node": "22.15.32",
-    "eslint": "9.29.0",
-    "nano-staged": "0.8.0",
-    "prettier": "3.5.3",
-    "publint": "0.3.12",
-    "simple-git-hooks": "2.13.0",
-    "tsdown": "0.12.8",
-    "typescript": "5.8.3"
+    "@antfu/eslint-config": "6.2.0",
+    "@changesets/changelog-github": "1.0.0-next.1",
+    "@changesets/cli": "3.0.0-next.1",
+    "@tsconfig/node22": "22.0.5",
+    "@tsconfig/strictest": "2.0.8",
+    "@types/node": "24.10.1",
+    "eslint": "9.39.1",
+    "lint-staged": "16.2.7",
+    "prettier": "3.6.2",
+    "publint": "0.3.15",
+    "simple-git-hooks": "2.13.1",
+    "tsdown": "0.16.6",
+    "typescript": "5.9.3"
   }
 }
