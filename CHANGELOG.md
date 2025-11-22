@@ -1,5 +1,13 @@
 # tinywhich
 
+## 1.0.0
+
+### Major Changes
+
+- #6 `b2af8ed` Thanks @beeequeue!
+  - Updated tsdown and enabled dead code elimination.
+  - Release 1.0.0
+
 ## 0.1.2
 
 ### Patch Changes
