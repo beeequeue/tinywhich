@@ -9,23 +9,26 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
+  contents: read
 
 jobs:
   changesets:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: changesets
+      cancel-in-progress: true
+
     permissions:
-      contents: write
-      id-token: write
-      issues: read
-      pull-requests: write
+      contents: write # pushing tags
+      id-token: write # oidc token & provenance for npm
+      issues: read # finding issues and prs for changelog
+      pull-requests: write # to create release pr
 
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
