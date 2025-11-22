@@ -3,13 +3,13 @@
   "type": "module",
   "private": true,
   "version": "0.0.0",
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.23.0",
   "scripts": {
     "bench": "node --experimental-strip-types bench.ts"
   },
   "devDependencies": {
     "mitata": "1.0.34",
     "tinywhich": "link:../",
-    "which": "5.0.0"
+    "which": "6.0.0"
   }
 }
